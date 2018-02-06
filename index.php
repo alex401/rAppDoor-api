@@ -1,5 +1,7 @@
 <?php
 require 'vendor/autoload.php';
+//require 'vendor/slim/slim/Slim/MiddlewareAwareTrait.php';
+//require 'vendor/slim/slim/Slim/App.php';
 
 //******************************
 // Init
@@ -9,7 +11,14 @@ require 'vendor/autoload.php';
 //
 //******************************
 
-$app = new Slim\App();
+$app = new \Slim\App([
+'settings' => [
+    'determineRouteBeforeAppMiddleware' => true,
+    'displayErrorDetails' => true,
+    'addContentLengthHeader' => false,
+],
+]);
+
 
 //******************************
 // Handling CORS
